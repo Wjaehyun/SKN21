@@ -9,3 +9,6 @@ commit
 	- commit 에 포함시킬 파일들을 추가
 
 3. git commit -m "커밋 메시지"
+
+4. git push
+	- local의 commit을 원격과 동기화(로컬 > 원격저장소)
