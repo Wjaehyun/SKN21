@@ -1,4 +1,6 @@
-commit
+■git init  : 로컬저장소를 생성
+
+■commit
 1. git status : 현재 저장소 상태 확인
 	- 빨강색 파일/디렉토리명 > add 할 대상이 있다
 	- 초록색 파일명/디렉토리명 > commit 할 대상이 있다
@@ -12,3 +14,7 @@ commit
 
 4. git push
 	- local의 commit을 원격과 동기화(로컬 > 원격저장소)
+
+■git clone [url]
+	- 원격 저장소를 로컬에 복제해서 로컬저장소 생성
+	- 원격저장소에서 가져올 때 사용
