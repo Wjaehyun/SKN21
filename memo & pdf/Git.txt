@@ -1,5 +1,8 @@
 ■git init  : 로컬저장소를 생성
 
+■git pull
+- 하루의 시작, 컴퓨터를 키면 항상 pull 부터
+
 ■commit
 1. git status : 현재 저장소 상태 확인
 	- 빨강색 파일/디렉토리명 > add 할 대상이 있다
