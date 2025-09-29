@@ -1,0 +1,11 @@
+commit
+1. git status : 현재 저장소 상태 확인
+	- 빨강색 파일/디렉토리명 > add 할 대상이 있다
+	- 초록색 파일명/디렉토리명 > commit 할 대상이 있다
+
+2. git add 파일명
+	-git add. (전부 add)
+	- staging/indexing
+	- commit 에 포함시킬 파일들을 추가
+
+3. git commit -m "커밋 메시지"
