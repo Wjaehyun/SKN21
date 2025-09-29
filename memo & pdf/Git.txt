@@ -1,23 +1,19 @@
-■git init  : 로컬저장소를 생성
+컴퓨터를 키면
+0. git pull
 
-■git pull
-- 하루의 시작, 컴퓨터를 키면 항상 pull 부터
-
-■commit
-1. git status : 현재 저장소 상태 확인
-	- 빨강색 파일/디렉토리명 > add 할 대상이 있다
-	- 초록색 파일명/디렉토리명 > commit 할 대상이 있다
-
+- 커밋
+0. git pull
+1. git status : 현재 저장소상태를 확인
+  - 빨강색 파일명/디렉토리명 -> add할 대상이 있다.
+  - 초록색 파일명/디렉토리명 -> commit 할 대상이 있다.
 2. git add 파일명
-	-git add. (전부 add)
-	- staging/indexing
-	- commit 에 포함시킬 파일들을 추가
-
-3. git commit -m "커밋 메시지"
-
+   git add .
+   - staging/indexing
+   - commit 에 포함시킬 파일들을 추가.
+3. git commit -m  "커밋메세지"s
 4. git push
-	- local의 commit을 원격과 동기화(로컬 > 원격저장소)
+   - 로컬의 커밋을 원격과 동기화. (로컬->원격)
 
-■git clone [url]
-	- 원격 저장소를 로컬에 복제해서 로컬저장소 생성
-	- 원격저장소에서 가져올 때 사용
+- git clone url
+  - 원격 저장소를 로컬에 복제해서 로컬저장소 생성.
+  - 참고) git init : 로컬저장소를 생성.
