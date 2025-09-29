@@ -1,0 +1,14 @@
+강사: 김성환
+kgmyh@naver.com
+
+	tool: vscode
+	language: python
+
+basic set
+	korean language pack
+	python
+	jupyter
+
+code helper
+	copliot (github)
+	커서
