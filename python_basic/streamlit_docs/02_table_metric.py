@@ -31,7 +31,7 @@ st.dataframe(df)
 ## 값이 변경될 때마다 변경된 DataFrame을 반환한다.
 st.subheader('st.data_editor()')
 change_df = st.data_editor(df)
-print(change_df)
+print(change_df) # 프린트는 터미널에 찍힌다.
 
 # st.table(): 테이블(static - interactive 기능 없이 표만 출력)
 st.subheader('st.table()')
@@ -50,4 +50,4 @@ st.metric(
     value="10°C",           # 출력할 값
     delta="1.2°C"           # metric의 등락 크기값(옵션). `+` 로 시작하거나 생략하면 오름, `-` 로 시작하면 내림.
 )
-st.metric(label="삼성전자**", value="60,600원", delta="-700원 (-1.14%)")
+st.metric(label="**삼성전자**", value="60,600원", delta="-700원 (-1.14%)")
