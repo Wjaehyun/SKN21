@@ -1,4 +1,4 @@
--- 한줄 주석 (--공백 으로 시작)
+-- 한줄 주석 (--공백 으로 시작) 
 /* block 주석 */
 
 /*
@@ -7,7 +7,6 @@ Mysql Workbench
   
   - SQL문 실행 - control + enter (cmd + enter)
 */
-
 
 /**********************************************************************************************************
 사용자 계정 생성
@@ -19,11 +18,11 @@ Mysql Workbench
 
 **********************************************************************************************************/
 -- local 접속 계정
-
+create user 'jaehyun'@'localhost' identified by '1234';
 -- 원격 접속 계정
-\
+create user 'jaehyun'@'%' identified by '1234';
 -- 등록된 사용자계정 조회
-
+select user, host from mysql.user;
 
 /********************************************************
  계정에 권한 부여
@@ -36,9 +35,30 @@ Mysql Workbench
   - 사용자관리: create user, drop user, grant option
 ********************************************************/
 
+-- 모든 데이터베이스의 모든 테이블에 대해 모든 권한 주기 
+grant all privileges on *.* to 'jaehyun'@'localhost';
+grant all privileges on *.* to 'jaehyun'@'%';
 
+-- user 권한 조회
+show grants for 'jaehyun'@'localhost';
+show grants for 'jaehyun'@'%';
 
+/********************************************************
+Database 생성
 
+CREATE DATABASE DB이름;
+********************************************************/
+
+create database testdb;
+show databases;
+/*
+어떤 db 안에 만들지 알려주기
+create table testdb.member
+
+특정 DB를 사용 > database 이름을 넣을 곳에 생략하면 설정한 DB를 사용한다.
+use database이름
+*/
+use testdb;
 
 /***********************************************************************************************************
 테이블 생성
@@ -60,11 +80,24 @@ age:       int            check key - 양수만 값으로 가진다.
 join_date: timestamp      not null, 기본값-값 저장시 일시
 ***********************************************************************************************************/
 -- 테이블 생성
-
+create table member (
+ id varchar(10) primary key,
+ password varchar(10) not null,
+ name varchar(30) not null,
+ point int,
+ email varchar(100) unique key,
+ gender char(1) not null check(gender in ('m', 'f')),
+ age int check(age > 0),
+ join_date timestamp not null default current_timestamp -- current_timestamp : insert 시점의 일시를 저장
+);
+-- 테이블 조회
+show tables;
+-- 테이블 상세정보를 조회(컬럼)
+describe member;
+desc member;
 
 -- 테이블 삭제
-
-
+drop table if exists member;
 
 
 /* *********************************************************************
@@ -76,7 +109,21 @@ INSERT 문 - 행 추가
      - SQL은 기본적으로 한 행(한개의 데이터)씩 테이블에 추가한다.
 
 ************************************************************************ */
+insert into member (id, password, name, point, email, gender, age, join_date)
+values('id-1', '1111', '홍길동', 1000, 'h@a.com', 'm', 20, '2025-10-14 17:25:45');
 
+insert into member
+values('id-2', '1234', '이순신', 1000, 'l@a.com', 'm', 30, '2025-10-14 17:25:49');
 
+-- join_date는 default 값(sql 실행 일수)가 insert 됨.
+insert into member (id, password, name, gender) values ('id-3', '1234', '강감찬', 'm');
 
+insert into member (id, password, name, gender, age) values ('id-4', '2234', '유관순', 'm', 15);
 
+-- 시간 미 입력 시 00:00:00
+insert into member (id, password, name, gender, age, join_date) values ('id-5', '2234', '유관순', 'm', 15, '2000-10-14');
+
+-- null(결축지)
+insert into member (id, password, name, gender, email) values ('id-6', '2235', '유관순', 'f', null);
+
+select * from member;
