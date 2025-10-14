@@ -12,11 +12,14 @@ st.set_page_config(page_title="Input Widget", layout="wide")
 ################################################################
 st.subheader("text 입력")
 name_value = st.text_input("이름")
-st.write("이름: " + name_value)
+if name_value:
+    st.write("이름: " + name_value)
 
 st.subheader("여러줄 텍스트 입력")
 info = st.text_area("정보", height=200)  #height: pixcel
-st.write(info.replace("\n", "<br>"), unsafe_allow_html=True)
+if info:
+    # unsafe_allow_html을 활용해서 <br>을 태그로 인식하게 함
+    st.write(info.replace("\n", "<br>"), unsafe_allow_html=True)
 
 st.subheader("Number Input")
 num = st.number_input("값")
@@ -71,6 +74,8 @@ st.write("**선택한 지역**:", option)
 st.subheader("Checkbox")
 @st.cache_data
 def get_data():
+    # csv 파일을 읽어서 DataFrame(판다스의 표)로 생성(read.csv)
+    # 앞 10개 행만 조회(head(10))
     df = pd.read_csv("data/boston_housing.csv").head(10)
     return df
 
@@ -95,6 +100,7 @@ uploaded_file = col4.file_uploader(
 ########## 업로드 된 파일 저장 ##########
 import os
 import io
+# Python Image Library 의 약자, opencv와 함께 이미지 다룰 때 가장 많이 쓰임
 from PIL import Image
 
 save_dir = "save_files"
@@ -103,11 +109,14 @@ if uploaded_file is not None:
     # UploadFile.getvalue(): 업로드된 파일을 bytes로 반환
     # UploadFile.name      : 업로드된 파일이름 반환.
     bytes_data = uploaded_file.getvalue()
+    # 저장할 경로
     save_filepath = os.path.join(save_dir, uploaded_file.name)
+    # 업로드 된 파일 저장
     with open(save_filepath, "wb") as fw:
         fw.write(bytes_data)
     st.write(uploaded_file.name)
-    st.write("타입:" + str(type(bytes_data)))
+    # 업로드 파일 타입확인(필요x)
+    st.write("타입:" + str(type(bytes_data))) 
     #################### 업로드 이미지 화면에 출력 (bytes to PIL.Image)
     data_io = io.BytesIO(bytes_data)
     img = Image.open(data_io)
@@ -133,6 +142,7 @@ with open(down_filepath, "rb") as fr:
         "파일 다운로드",                             # Button Label
         data=fr.read(),                             # 다운로드 시킬 파일 content. (str or bytes)
         file_name=os.path.basename(down_filepath),  # 다운 로드 될때 파일명 (경로일 경우)
+        # os.path.basename("경로") 경로에서 마지막 경로(basename)을 반환
     )
 
 
