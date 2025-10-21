@@ -1,7 +1,7 @@
--- CREATE DATABASE hr_join;
--- USE  hr_join;
+CREATE DATABASE hr_join;
+USE  hr_join;
 
--- set foreign_key_checks=0;
+set foreign_key_checks=0;
 
 -- ------------------------------------------------------
 -- DDL FOR DEPT
@@ -93,10 +93,11 @@ CREATE TABLE emp(
     salary 	  DECIMAL(7,2) NOT NULL,
     comm_pct  DECIMAL(2,2),
     dept_id   INT,
+    -- constraint pk_emp primary key(emp_id),
     CONSTRAINT fk_emp_dept FOREIGN KEY(dept_id) REFERENCES dept(dept_id) ON DELETE SET NULL,
     CONSTRAINT fk_emp_job FOREIGN KEY(job_id) REFERENCES job(job_id) ON DELETE SET NULL,
     CONSTRAINT fk_emp_mgr FOREIGN KEY(mgr_id) REFERENCES emp(emp_id) ON DELETE SET NULL
-);
+);	-- on delete cascade
 
 INSERT INTO emp (emp_id,emp_name,job_id,mgr_id,hire_date,salary,comm_pct,dept_id) VALUES (100,'Steven','AD_PRES',null,CAST('03-06-17' AS DATE),24000,null,90);
 INSERT INTO emp (emp_id,emp_name,job_id,mgr_id,hire_date,salary,comm_pct,dept_id) VALUES (101,'Neena','AD_VP',100,CAST('05-09-21' AS DATE),17000,null,90);
@@ -223,3 +224,13 @@ INSERT INTO salary_grade (grade,low_sal,high_sal) VALUES (2, 5001, 10000);
 INSERT INTO salary_grade (grade,low_sal,high_sal) VALUES (3, 10001, 15000);
 INSERT INTO salary_grade (grade,low_sal,high_sal) VALUES (4, 15001, 20000);
 INSERT INTO salary_grade (grade,low_sal,high_sal) VALUES (5, 20001, 99999);
+
+use hr_join;
+select * from dept;
+select * from job;
+select * from emp;
+--  (emp_id,emp_name,job_id,mgr_id,hire_date,salary,comm_pct,dept_id)
+select * from salary_grade;
+
+select * from emp order by emp_id desc;
+
