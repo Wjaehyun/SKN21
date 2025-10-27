@@ -1,0 +1,37 @@
+가상환경
+project - Root dir
+|
+------------가상환경 dir
+		|
+		------------- 파이썬 실행환경
+		|
+		------------- lib
+
+터미널에서 실행하는 곳이 Root dir
+
+uv는 github에 올리면 안된다.
+
+uv venv 
+> 가상환경으로 생성
+
+uv venv 이름
+> 가상환경 이름 주며 생성
+
+uv venv --python 3.10
+> 가상환경 파이썬 버전 설정 후 생성
+
+.venv\Scripts\activate
+> 가상환경으로 전환
+
+.venv\Scripts\deactivate
+가상환경 비활성화
+
+디렉토리 지우기
+> 가상환경 삭제
+
+모듈 설치
+> uv pip install 모듈명
+
+Ctrl + shift + p(명령 팔레트)
+python select interpretor
+uv pip install pandas ipykernel
