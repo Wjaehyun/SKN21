@@ -22,6 +22,7 @@ uv venv --python 3.10
 
 .venv\Scripts\activate
 > 가상환경으로 전환
+> 이름이 있을 시 이름\Scripts\activate
 
 .venv\Scripts\deactivate
 가상환경 비활성화
