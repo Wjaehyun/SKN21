@@ -1,0 +1,13 @@
+uv pip install ipykernel pandas matplotlib
+ipykernel : jupyter 쓰기 위함
+
+matplotlib 설치 후 
+한글 깨짐 방지를 위한 작업
+
+c:\documents\SKN21\05_시각화\.venv\Lib\site-packages\matplotlib\mpl-data\matplotlibrc
+
+# font.family  : sans머시기 를 수정하여
+font.family:  malgun gothic
+
+#axes.unicode_minus: True 를 수정하여
+axes.unicode_minus: False
