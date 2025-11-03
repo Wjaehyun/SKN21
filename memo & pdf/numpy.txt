@@ -1,0 +1,1 @@
+numpy - pandas, matplotlib, scikit-learn 등 설치 시 같이 설치(워낙 유명하기 때문)
