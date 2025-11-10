@@ -26,7 +26,7 @@ def plot_precision_recall_curve(y_proba, pred_proba, estimator_name=None, title=
     disp = PrecisionRecallDisplay(
         precision, recall, 
         average_precision=ap_score,  
-        estimator_name=estimator_name
+        name=estimator_name
     )
     disp.plot()
     if title:
