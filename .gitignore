@@ -8,6 +8,9 @@ saved_model/
 .env
 env
 
+.datasets
+.models
+
 __pycache__/
 
 
