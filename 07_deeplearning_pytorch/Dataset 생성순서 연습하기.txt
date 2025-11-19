@@ -1,0 +1,8 @@
+Dataset 생성
+DataLoader 생성
+
+모델 정의
+모델 객체, 손실함수, Optimizer객체 생성
+
+학습
+최종평가
