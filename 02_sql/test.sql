@@ -1,4 +1,71 @@
 SHOW TABLES;
+USE test;
+USE telco_churn;
+
+ALTER USER 'root'@'localhost'
+IDENTIFIED WITH mysql_native_password BY 'Wjaehyun05~!!';
+FLUSH PRIVILEGES;
+
+CREATE TABLE IF NOT EXISTS customer_churn (
+    customerID VARCHAR(50) PRIMARY KEY,
+    gender VARCHAR(20),
+    SeniorCitizen INT,
+    Partner VARCHAR(10),
+    Dependents VARCHAR(10),
+    tenure INT,
+    PhoneService VARCHAR(10),
+    MultipleLines VARCHAR(50),
+    InternetService VARCHAR(50),
+    OnlineSecurity VARCHAR(50),
+    OnlineBackup VARCHAR(50),
+    DeviceProtection VARCHAR(50),
+    TechSupport VARCHAR(50),
+    StreamingTV VARCHAR(50),
+    StreamingMovies VARCHAR(50),
+    Contract VARCHAR(50),
+    PaperlessBilling VARCHAR(10),
+    PaymentMethod VARCHAR(50),
+    MonthlyCharges FLOAT,
+    TotalCharges FLOAT,
+    numAdminTickets INT,
+    numTechTickets INT,
+    Churn VARCHAR(10)
+);
+
+SELECT * FROM customer_churn;
+SELECT COUNT(*) FROM customer_churn;
+
+SELECT * FROM customer_churn LIMIT 5;
+
+SELECT * FROM customer_churn;
+SELECT DISTINCT customerID FROM customer_churn LIMIT 10;
+
+-- 테이블 구조 변경 (컬럼 삭제)
+ALTER TABLE customer_churn
+    DROP COLUMN PhoneService,
+    DROP COLUMN MultipleLines,
+    DROP COLUMN OnlineSecurity,
+    DROP COLUMN OnlineBackup,
+    DROP COLUMN DeviceProtection,
+    DROP COLUMN TechSupport,
+    DROP COLUMN StreamingTV,
+    DROP COLUMN StreamingMovies,
+    DROP COLUMN PaperlessBilling,
+    DROP COLUMN TotalCharges,
+    DROP COLUMN numAdminTickets,
+    DROP COLUMN numTechTickets;
+-- (주의: Churn과 customerID는 중요해서 삭제 목록에 안 넣었습니다!)
+
+select * from customer_churn;
+
+CREATE USER 'member'@'%' IDENTIFIED BY '1234!';
+GRANT SELECT, INSERT, UPDATE ON telco_churn.* TO 'member'@'%';
+FLUSH PRIVILEGES;
+
+ALTER USER 'member'@'%' IDENTIFIED WITH mysql_native_password BY 'team1234!';
+
+
+
 
 DROP table IF exists region;
 
