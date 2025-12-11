@@ -8,6 +8,8 @@ saved_model/
 .env
 env
 
+.github
+
 07_deeplearning_pytorch/datasets
 datasets
 datasets/
