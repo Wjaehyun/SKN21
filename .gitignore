@@ -21,3 +21,11 @@ petition_corpus.txt
 
 cache.sqlite
 *.sqlite
+
+10_langchain/data/papers/paper_1.pdf
+10_langchain/data/papers/2412.15184v2.pdf
+10_langchain/data/papers/2501.10321v3.pdf
+10_langchain/data/papers/2507.01939v4.pdf
+10_langchain/data/papers/2512.17864v1.pdf
+10_langchain/data/papers/2512.17891v1.pdf
+10_langchain/data/papers/Keypoint Counting Classifiers
