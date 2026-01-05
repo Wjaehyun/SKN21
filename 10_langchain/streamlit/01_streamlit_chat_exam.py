@@ -64,9 +64,10 @@ chatbot_message_list = ["오늘 날씨가 어떤가요?",
 
 ai_message = chatbot_message_list[idx] # AI의 답변
 
-# 대화 내역을 저장할 session state를 생성
+# 대화 내역을 저장할 session state 를 생성
 if "chat_history" not in st.session_state:
     st.session_state['chat_history'] = []
+
 
 st.title("Chatbot 위젯 튜토리얼")
 
@@ -74,23 +75,24 @@ st.title("Chatbot 위젯 튜토리얼")
 prompt = st.chat_input("User:")
 
 if prompt: # 글이 입력되었다면 prompt와 ai 응답을 화면에 출력
-    # container = st.chat_message(user)
-    # container.write('sssss')
     # 사용자 질문 추가
     st.session_state['chat_history'].append(
         {"role":"user", "content":prompt}
     )
     # AI 응답을 추가
     st.session_state['chat_history'].append(
-        {"role":"ai", "content":ai_message}
+        {"role":"ai", "content": ai_message}
     )
-    # with st.chat_message("user"):
-    #     st.write(prompt)
 
-    # with st.chat_message("ai"):
-    #     st.write(ai_message)
-
-# 대화 내역 출력 - chat_history의 모든 내역을 출력
+# 대화내역 출력 - chat_history의 모든 내역을 출력
 for chat_dict in st.session_state['chat_history']:
     with st.chat_message(chat_dict['role']):
-        st.write(chat_dict['content'])
+        st.write(chat_dict["content"])
+
+
+
+# uv pip install streamlit
+# cd streamlit
+# 실행: uv run   streamlit run 01_streamlit_chat_exam.py
+
+

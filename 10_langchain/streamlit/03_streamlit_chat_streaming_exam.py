@@ -9,13 +9,13 @@ import streamlit as st
 def get_model():
     # OpenAI GPT 모델 연동
     load_dotenv()
-    return ChatOpenAI(model='gpt-5-mini')
+    return ChatOpenAI(model="gpt-5-mini")
 
 @st.cache_resource
 def get_prompt_template():
     prompt = ChatPromptTemplate(
         [
-            {'role':"system", "content":"당신은 유능한 인공지능 Assistant입니다."},
+            {"role":"system", "content":"당신은 유능한 인공지능 Assistant입니다."},
             MessagesPlaceholder("history"),
             {"role":"user", "content":"{query}"}
         ]
@@ -30,20 +30,21 @@ if "chat_history" not in st.session_state:
 
 st.title("Chatbot Service")
 
-#################################################################
-# 기존 대화 출력
-# 출력 - session_state 저장된 대화 내역을 chat_message()를 이용해 출력
+######################################
+# 기존 대화내역 출력 
+# - session_state 저장된 대화내역을 chat_message()를 이용해 출력
+######################################
 for chat_dict in st.session_state['chat_history']:
     with st.chat_message(chat_dict['role']):
         st.write(chat_dict['content'])
 
 user_input = st.chat_input("User:")
 
-if user_input: # 사용자가 질문을 입력하면 작업
+if user_input: # 사용자가 질문을 입력하면
     # 사용자 질문을 출력
     with st.chat_message("user"):
         st.write(user_input)
-    # PromptTemplate으로 query 생성
+    # PromptTemplate으로 쿼리 생성
     query = prompt.invoke({
         "query":user_input,
         "history":st.session_state['chat_history']
@@ -51,7 +52,7 @@ if user_input: # 사용자가 질문을 입력하면 작업
     # llm에 요청 - stream()
     generator = model.stream(query)
     with st.chat_message("ai"):
-        # generator가 값을 제공하는데로 출력하고, 최종 출력한 내용을 반환
+        # generator가 값을 제공하는데로 출력하고 최종 출력한 내용을 반환
         response = st.write_stream(generator)
 
     # 대화 내역을 session state에 저장.
@@ -61,3 +62,11 @@ if user_input: # 사용자가 질문을 입력하면 작업
     st.session_state['chat_history'].append(
         {"role":"ai", "content":response}
     )
+
+
+
+
+
+# cd streamlit  
+#  .....\streamlit>
+# uv run streamlit run 03_streamlit_chat_streaming_exam.py
