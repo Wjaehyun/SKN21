@@ -21,7 +21,8 @@
         ></div>
 
         <input type="text" name="txt" onblur="check(this)">
-
+        
+        <!-- onsubmit="return false" 전송을 중지 -->
         <form
             action="/test"
             method="post"
@@ -35,36 +36,39 @@
 
         <script>
             function check(text_input) {
-                alert(text_input.value);
-                text_input.value = "";
+                alert(text_input.value); // 입력 Form의 value(입력값)을 조회.
+                text_input.value = "";   // value를 변경.
             }
             
             function checkForm() {
+                // id로 태그객체를 조회.
                 let nameTF = document.getElementById("name");
                 let ageTF = document.getElementById("age");
-                let name = nameTF.value;
+                // 텍스트 입력 폼에 입력된 text를 조회.
+                let name = nameTF.value;  // 태그객체.변수 -> 태그의 속성을 조회.
                 let age = ageTF.value;
 
-                if (!name) {
+                if (!name) { // 문자열 false: "", null
                     alert("이름을 입력하세요");
                     nameTF.focus();
-                    return false;
+                    return false; // submit을 중단
                 } else {
-                    if (name.length > 5) {
+                    if (name.length > 5) { // 문자열.length -> 글자수 반환.
                         alert("이름은 5글자까지 가능합니다.");
                         nameTF.value = "";
                         nameTF.focus();
                         return false;
                     }
                 }
-                if (!age) {
+                if (!age) { 
                     alert("나이를 입력하세요");
                     ageTF.focus();
                     return false;
                 } else {
                     ageNum = parseInt(age);
-                    if (!ageNum) {
-                        alert("나이는 숫자만 가능합니다.");
+                    // parseInt("삼십") -> NaN (false) 
+                    if (!ageNum || ageNum < 0) {
+                        alert("나이는 양수 숫자만 가능합니다.");
                         ageTF.value = "";
                         ageTF.focus();
                         return false;

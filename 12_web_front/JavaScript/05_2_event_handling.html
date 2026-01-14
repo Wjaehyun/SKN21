@@ -28,13 +28,15 @@
             const nameInput = document.getElementById('name')
             const addressInput = document.getElementById('address');
             form.addEventListener("submit", (evt)=>{
-                evt.preventDefault(); // 기존 Event를 멈춘다.
+                // 기존 Event를 멈춘다.
+                // submit event의 기존 event -> submit을 멈춘다.
+                evt.preventDefault(); 
 
                 const name = nameInput.value.trim()
                 const address = addressInput.value.trim()
 
                 if (name.length > 5) {
-                    alert("이름은 2글자이상 입력하세요.");
+                    alert("이름은 5글자 보다 적게 입력하세요.");
                     nameInput.value = "";
                     nameInput.focus();
                     return;
@@ -46,7 +48,7 @@
                     addressInput.focus();
                     return;
                 }
-                form.submit()
+                form.submit(); // 전송
             })
         </script>
     </body>
