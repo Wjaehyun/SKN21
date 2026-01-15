@@ -1,0 +1,28 @@
+django 다운로드
+	- pip install django
+
+프로젝트 디렉토리 안에서 명령어 실행하여 생성
+	- django-admin startprojext config .
+
+개발 서버를 실행
+	- python manage.py runserver
+	- 웹브라우저에서 http://127.0.0.1:8000
+
+app 생성
+	- python manage startapp  앱이름
+
+생성한 app 등록
+	- rootdir/config/settings.py -> INSTALLED_APPS안에 추가
+
+계정생성
+	- python manage.py migrate
+	- pyhton manage.py createsuperuser
+관리자 페이지
+	- 서버실행
+		- python manage.py runserver
+		- http://127.0.0.1:8000/admin
+
+한글 타입존 설정
+	- config/setting.py -> LANGUAGE_CODE = 'ko-kr' # 언어코드 - 국가
+				 -> TIME_ZONE = 'Asia/Seoul' 
+
